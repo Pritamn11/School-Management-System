@@ -83,18 +83,21 @@ REST_FRAMEWORK = {
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+from decouple import config
 
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.sqlite3',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
-        'USER': 'postgres',
-        'PASSWORD': 'LURyiUrLFPsNhzDSCsAjHGyLKcrFzpXk',
-        'HOST': 'autorack.proxy.rlwy.net',
-        'PORT': '54842',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT'),
     }
 }
+SECRET_KEY = config('SECRET_KEY')
+
 
 # AUTH_USER_MODEL = 'base.Teacher'
 AUTH_USER_MODEL = 'base.User'
